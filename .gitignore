@@ -1,0 +1,27 @@
+.DS_Store
+
+# CMake
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+install_manifest.txt
+*.cmake
+Makefile
+
+# Object files
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.o
+keva-stratum
+
+# Configs
+config.json
+testnet.json
+mainnet.json
+
+/build/_workspace/
+/build/bin/
+.deps
