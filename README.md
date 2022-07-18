@@ -1,8 +1,8 @@
-# keva-stratum
+# tnft-stratum
 
-High performance CryptoNote mining stratum with Web-interface written in Golang. This project is forked from [monero-stratum](https://github.com/sammy007/monero-stratum), with the support for Kevacoin and simpler build process. It includes the part of Monero source code required for the project and does not need an external Monero source tree. It also builds on Windows through MSYS2.
+High performance CryptoNote mining stratum with Web-interface written in Golang. This project is forked from [monero-stratum](https://github.com/sammy007/monero-stratum), with the support for Tnftcoin and simpler build process. It includes the part of Monero source code required for the project and does not need an external Monero source tree. It also builds on Windows through MSYS2.
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/kevacoin-project/keva-stratum)](https://goreportcard.com/report/github.com/kevacoin-project/keva-stratum)
+[![Go Report Card](https://goreportcard.com/badge/github.com/truenft-tech/tnft-stratum)](https://goreportcard.com/report/github.com/truenft-tech/tnft-stratum)
 
 **Stratum feature list:**
 
@@ -21,7 +21,7 @@ High performance CryptoNote mining stratum with Web-interface written in Golang.
 Dependencies:
 
   * go-1.6
-  * Everything required to build [Monero](https://github.com/monero-project/monero) or [Kevacoin](https://github.com/kevacoin-project/kevacoin). Follow their build instructions to install the dependencies for your system.
+  * Everything required to build [Monero](https://github.com/monero-project/monero) or [Tnftcoin](https://github.com/truenft-tech/tnftcoin). Follow their build instructions to install the dependencies for your system.
 
 ### Linux
 
@@ -34,8 +34,8 @@ Install Golang and required packages:
 
 Clone stratum:
 
-    git clone https://github.com/kevacoin-project/keva-stratum.git
-    cd keva-stratum
+    git clone https://github.com/truenft-tech/tnft-stratum.git
+    cd tnft-stratum
 
 Build stratum:
 
@@ -46,13 +46,13 @@ Build stratum:
 
 Run stratum:
 
-    ./keva-stratum config.json
+    ./tnft-stratum config.json
 
 
 If you need to bind to privileged ports and don't want to run from `root`:
 
     sudo apt-get install libcap2-bin
-    sudo setcap 'cap_net_bind_service=+ep' /path/to/keva-stratum
+    sudo setcap 'cap_net_bind_service=+ep' /path/to/tnft-stratum
 
 ### Mac OS X
 
@@ -62,8 +62,8 @@ Install Golang and required packages:
 
 Clone stratum:
 
-    git clone https://github.com/kevacoin-project/keva-stratum.git
-    cd keva-stratum
+    git clone https://github.com/truenft-tech/tnft-stratum.git
+    cd tnft-stratum
 
 Build stratum:
 
@@ -74,18 +74,18 @@ Build stratum:
 
 Run stratum:
 
-    ./keva-stratum config.json
+    ./tnft-stratum config.json
 
 If you need to bind to privileged ports and don't want to run from `root`:
 
     sudo apt-get install libcap2-bin
-    sudo setcap 'cap_net_bind_service=+ep' /path/to/keva-stratum
+    sudo setcap 'cap_net_bind_service=+ep' /path/to/tnft-stratum
 
 ### Windows
 
 If you are using Windows Linux Subsystem (WLS), check the instruction under Linux.
 
-Just like Monero, keva-stratum can be built on Windows using the MinGW toolchain within [MSYS2](https://www.msys2.org/) environment.
+Just like Monero, tnft-stratum can be built on Windows using the MinGW toolchain within [MSYS2](https://www.msys2.org/) environment.
 
 - Download and install the [MSYS2 installer](https://www.msys2.org/), either the 64-bit or the 32-bit package, depending on your system.
 - Open the MSYS shell via the application `mingw32` (for 32-bit Windows) or `mingw64` (for 64-bit windows).
@@ -109,8 +109,8 @@ Just like Monero, keva-stratum can be built on Windows using the MinGW toolchain
 
 Clone stratum:
 
-    git clone https://github.com/kevacoin-project/keva-stratum.git
-    cd keva-stratum
+    git clone https://github.com/truenft-tech/tnft-stratum.git
+    cd tnft-stratum
 
 Build stratum:
 
@@ -136,7 +136,7 @@ Now we are ready to build:
 
 Run stratum:
 
-    keva-stratum.exe config.json
+    tnft-stratum.exe config.json
 
 ## Configuration (config.json)
 
@@ -145,7 +145,7 @@ Configuration is self-describing, just copy *config.example.json* to *config.jso
 ```javascript
 {
   // Address for block rewards
-  "address": "YOUR-ADDRESS-NOT-EXCHANGE",    // Use 'kevacoin-cli getnewaddress' to get the address
+  "address": "YOUR-ADDRESS-NOT-EXCHANGE",    // Use 'Tnftcoin-cli getnewaddress' to get the address
   // Don't validate address
   "bypassAddressValidation": true,
   // Don't validate shares
@@ -194,16 +194,16 @@ Configuration is self-describing, just copy *config.example.json* to *config.jso
     {
       "name": "Main",
       "host": "127.0.0.1",
-      "port": 18081,
+      "port": 8796,
       "timeout": "10s",
-      "user": "yourusername",                 //The value should be the same as defined in kevacoin.config
-      "password": "yourpassword"              //The value should be the same as defined in kevacoin.config
+      "user": "yourusername",                 //The value should be the same as defined in Tnftcoin.config
+      "password": "yourpassword"              //The value should be the same as defined in Tnftcoin.config
     }
   ]
 }
 ```
 
-The `upstream` is used to point to the Kevacoin daemon `kevacoind`. The `user` and `password` under `upstream` are mandatory, and they must be the same as the ones specified in Kevacoin configuration file `kevacoin.conf`. You must use `anything.WorkerID` as username in your miner. Either disable address validation or use `<address>.WorkerID` as username. If there is no workerID specified your rig stats will be merged under `0` worker. If mining software contains dev fee rounds its stats will usually appear under `0` worker. This stratum acts like your own pool, the only exception is that you will get rewarded only after block found, shares only used for stats.
+The `upstream` is used to point to the Tnftcoin daemon `tnftcoind`. The `user` and `password` under `upstream` are mandatory, and they must be the same as the ones specified in Tnftcoin configuration file `tnftcoin.conf`. You must use `anything.WorkerID` as username in your miner. Either disable address validation or use `<address>.WorkerID` as username. If there is no workerID specified your rig stats will be merged under `0` worker. If mining software contains dev fee rounds its stats will usually appear under `0` worker. This stratum acts like your own pool, the only exception is that you will get rewarded only after block found, shares only used for stats.
 
 ### License
 
